@@ -19,7 +19,7 @@ jobs:
     - uses: bufbuild/buf-lint-action@v1
     - uses: bufbuild/buf-breaking-action@v1
       with:
-        agains: https://github.com/${GITHUB_REPOSITORY}.git#branch=master
+        against: https://github.com/${GITHUB_REPOSITORY}.git#branch=master
     - uses: bufbuild/buf-push-action@v1
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master'}}
       with:
