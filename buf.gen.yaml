@@ -3,7 +3,7 @@ version: v1
 managed: # https://buf.build/docs/generate/managed-mode
   enabled: true
   go_package_prefix:
-    default: github.com/havok-io/apis-go
+    default: github.com/havok-io/apis-go # 因为使用了Generated SDKs，实际不生效
     except:
     - buf.build/googleapis/googleapis
     override:
