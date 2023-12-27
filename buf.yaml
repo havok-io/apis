@@ -1,0 +1,8 @@
+version: v1
+name: buf.build/havok-io/apis
+breaking:
+  use:
+  - FILE
+lint:
+  use:
+  - DEFAULT

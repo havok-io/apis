@@ -1,0 +1,26 @@
+name: buf-pull-request
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - release*
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: bufbuild/buf-setup-action@v1
+      with:
+        version: "1.28.1"
+        buf_api_token: ${{ secrets.BSR_TOKEN }}
+        buf_user: ${{ secrets.BSR_USER }}
+    - uses: bufbuild/buf-lint-action@v1
+    - uses: bufbuild/buf-breaking-action@v1
+      with:
+        agains: https://github.com/${GITHUB_REPOSITORY}.git#branch=master
+    - uses: bufbuild/buf-push-action@v1
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master'}}
+      with:
+        buf_token: ${{ secrets.BSR_TOKEN }}
