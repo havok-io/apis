@@ -1,4 +1,4 @@
-name: buf-pull-request
+name: buf
 on:
   push:
     branches:
@@ -16,11 +16,22 @@ jobs:
         version: "1.28.1"
         buf_api_token: ${{ secrets.BSR_TOKEN }}
         buf_user: ${{ secrets.BSR_USER }}
+        github_token: ${{ github.token }}
     - uses: bufbuild/buf-lint-action@v1
     - uses: bufbuild/buf-breaking-action@v1
       with:
         against: https://github.com/${GITHUB_REPOSITORY}.git#branch=master
+  push:
+    runs-on: ubunutu-latest
+    needs: [build]
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master'}}
+    - uses: actions/checkout@v4
+    - uses: bufbuild/buf-setup-action@v1
+      with:
+        version: "1.28.1"
+        buf_api_token: ${{ secrets.BSR_TOKEN }}
+        buf_user: ${{ secrets.BSR_USER }}
+        github_token: ${{ github.token }}
     - uses: bufbuild/buf-push-action@v1
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master'}}
       with:
         buf_token: ${{ secrets.BSR_TOKEN }}
