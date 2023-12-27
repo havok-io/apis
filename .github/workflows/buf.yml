@@ -1,11 +1,5 @@
 name: buf
-on:
-  push:
-    branches:
-    - master
-  pull_request:
-    branches:
-    - release*
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,6 +16,6 @@ jobs:
       with:
         against: https://github.com/${GITHUB_REPOSITORY}.git#branch=master
     - uses: bufbuild/buf-push-action@v1
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master'}}
       with:
         buf_token: ${{ secrets.BSR_TOKEN }}
+        draft: ${{ github.ref_name != 'master'}}

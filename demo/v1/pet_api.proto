@@ -4,8 +4,6 @@ package demo.v1;
 
 import "demo/v1/pet.proto";
 
-option go_package = "github.com/havok-io/apis/demo/v1";
-
 service PetAPI {
   rpc GetPet(GetPetRequest) returns (GetPetResponse) {}
 }

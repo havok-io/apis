@@ -1,0 +1,16 @@
+# https://buf.build/docs/configuration/v1/buf-gen-yaml
+version: v1
+managed: # https://buf.build/docs/generate/managed-mode
+  enabled: true
+  go_package_prefix:
+    default: github.com/havok-io/apis-go
+    except:
+    - buf.build/googleapis/googleapis
+    override:
+plugins:
+- plugin: buf.build/protocolbuffers/go:v1.32.0
+  out: gen/go
+  opt: paths=source_relative
+- plugin: buf.build/connectrpc/go:v1.14.0
+  out: gen/go
+  opt: paths=source_relative
