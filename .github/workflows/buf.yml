@@ -22,7 +22,7 @@ jobs:
       with:
         against: https://github.com/${GITHUB_REPOSITORY}.git#branch=master
 
-  publish:
+  bsr:
     runs-on: ubunutu-latest
     needs: [build]
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master'}}
