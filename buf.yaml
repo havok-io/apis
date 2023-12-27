@@ -1,3 +1,4 @@
+# default values: https://buf.build/docs/configuration/v1/buf-yaml#default-values
 version: v1
 name: buf.build/havok-io/apis
 breaking:
@@ -6,3 +7,7 @@ breaking:
 lint:
   use:
   - DEFAULT
+  service_suffix: API
+deps:
+- buf.build/googleapis/googleapis
+- buf.build/bufbuild/protovalidate

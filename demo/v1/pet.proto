@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package demo.v1;
 
+option go_package = "github.com/havok-io/apis/demo/v1";
+
 // PetType represents the different types of pets in the pet store.
 enum PetType {
   PET_TYPE_UNSPECIFIED = 0;

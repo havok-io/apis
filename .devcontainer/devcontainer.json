@@ -13,14 +13,18 @@
 	},
 
 	"remoteEnv":  {
-		"GOPROXY": "https://goproxy.cn,direct"
+		"GOPROXY": "https://goproxy.cn,direct",
+		"DEBIAN_FRONTEND": "noninteractive"
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "make tools",
+	"onCreateCommand": {
+		"go install": "make tools",
+		"apt install": "sudo apt update -yqq && sudo apt install -y --no-install-recommends protobuf-compiler"
+	},
 
 	// Configure tool-specific properties.
 	"customizations": {
@@ -37,12 +41,12 @@
 				"bufbuild.vscode-buf",
 				"github.vscode-github-actions",
 				"GitHub.vscode-pull-request-github",
-				"zxh404.vscode-proto3",
-				"kennylong.kubernetes-yaml-formatter"
+				"kennylong.kubernetes-yaml-formatter",
+				"ms-vscode.makefile-tools"
 			]
 		}
-	}
+	},
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "vscode"
+	"remoteUser": "vscode"
 }
