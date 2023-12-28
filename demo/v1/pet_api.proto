@@ -3,9 +3,11 @@ syntax = "proto3";
 package demo.v1;
 
 import "demo/v1/pet.proto";
+import "google/protobuf/empty.proto";
 
 service PetAPI {
   rpc GetPet(GetPetRequest) returns (GetPetResponse) {}
+  rpc Ping(PingRequest) returns (PingResponse) {}
 }
 
 message GetPetRequest {
@@ -14,4 +16,12 @@ message GetPetRequest {
 
 message GetPetResponse {
   Pet pet = 1;
+}
+
+message PingRequest {
+  google.protobuf.Empty ack = 1;
+}
+
+message PingResponse {
+  google.protobuf.Empty ack = 1;
 }

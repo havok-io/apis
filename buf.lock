@@ -11,3 +11,8 @@ deps:
     repository: googleapis
     commit: a86849a25cc04f4dbe9b15ddddfbc488
     digest: shake256:e19143328f8cbfe13fc226aeee5e63773ca494693a72740a7560664270039a380d94a1344234b88c7691311460df9a9b1c2982190d0a2612eae80368718e1943
+  - remote: buf.build
+    owner: protocolbuffers
+    repository: wellknowntypes
+    commit: 11912caccc894a0e8bfa509e433b10c0
+    digest: shake256:c14a5a03f8db59c57b701c95f6e524b42f3f3be251e60ccf4108d91c068a5c31b123ec402e62f8171734a663a8c8a940a1ec48c09448c88033112b45f5ae4c7f
